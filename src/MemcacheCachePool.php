@@ -39,14 +39,13 @@ class MemcacheCachePool extends AbstractCachePool
 
     protected function clearOneObjectFromCache($key)
     {
-        $flags = false;
-        $this->cache->delete($key, $flags);
+        $this->cache->delete($key);
 
-        return $flags === false;
+        return true;
     }
 
     protected function storeItemInCache($key, CacheItemInterface $item, $ttl)
     {
-        return $this->cache->set($key, $item, false, $ttl ?: 0);
+        return $this->cache->set($key, $item, 0, $ttl ?: 0);
     }
 }
