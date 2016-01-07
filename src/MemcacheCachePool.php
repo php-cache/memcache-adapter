@@ -29,13 +29,7 @@ class MemcacheCachePool extends AbstractCachePool
 
     protected function fetchObjectFromCache($key)
     {
-        $cacheItem = $this->cache->get($key);
-
-        if ($cacheItem === false) {
-            return false;
-        }
-
-        return $cacheItem;
+        return $this->cache->get($key);
     }
 
     protected function clearAllObjectsFromCache()
