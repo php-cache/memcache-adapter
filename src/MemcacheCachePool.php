@@ -19,6 +19,16 @@ use Psr\Cache\CacheItemInterface;
  */
 class MemcacheCachePool extends AbstractCachePool
 {
+    /**
+     * @var \Memcache
+     */
+    private $cache;
+
+    public function __construct(\Memcache $cache)
+    {
+        $this->cache = $cache;
+    }
+
     protected function fetchObjectFromCache($key)
     {
         return false;
