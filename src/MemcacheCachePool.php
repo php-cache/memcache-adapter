@@ -12,40 +12,47 @@
 namespace Cache\Adapter\Memcache;
 
 use Cache\Adapter\Common\AbstractCachePool;
+use Memcache;
 use Psr\Cache\CacheItemInterface;
 
-/**
- *
- */
 class MemcacheCachePool extends AbstractCachePool
 {
     /**
-     * @var \Memcache
+     * @var Memcache
      */
     private $cache;
 
-    public function __construct(\Memcache $cache)
+    public function __construct(Memcache $cache)
     {
         $this->cache = $cache;
     }
 
     protected function fetchObjectFromCache($key)
     {
-        return false;
+        $cacheItem = $this->cache->get($key);
+
+        if ($cacheItem === false) {
+            return false;
+        }
+
+        return $cacheItem;
     }
 
     protected function clearAllObjectsFromCache()
     {
-        return true;
+        return $this->cache->flush();
     }
 
     protected function clearOneObjectFromCache($key)
     {
-        return true;
+        $flags = false;
+        $this->cache->delete($key, $flags);
+
+        return $flags === false;
     }
 
     protected function storeItemInCache($key, CacheItemInterface $item, $ttl)
     {
-        return true;
+        return $this->cache->set($key, $item, false, $ttl ?: 0);
     }
 }

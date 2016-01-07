@@ -13,6 +13,7 @@ namespace Cache\Adapter\Memcache\Tests;
 
 use Cache\Adapter\Memcache\MemcacheCachePool;
 use Cache\IntegrationTests\TaggableCachePoolTest;
+use Memcache;
 
 class IntegrationTagTest extends TaggableCachePoolTest
 {
