@@ -1,6 +1,5 @@
 language: php
 php:
-  - "7.0"
   - "5.6"
   - "5.5"
 
@@ -13,16 +12,16 @@ matrix:
   fast_finish: true
 
 before_install:
-    - phpenv config-rm xdebug.ini
-    - pip install --user codecov
+  - phpenv config-rm xdebug.ini
+  - pip install --user codecov
 
 before_script:
-    - echo "extension = memcache.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
-    - travis_retry composer self-update
-    - travis_retry composer install --prefer-source --no-interaction
+  - echo "extension = memcache.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
+  - travis_retry composer self-update
+  - travis_retry composer install --prefer-source --no-interaction
 
 script:
-    - php -dzend_extension=xdebug.so vendor/bin/phpunit --coverage-clover=coverage.xml
+  - php -dzend_extension=xdebug.so vendor/bin/phpunit --coverage-clover=coverage.xml
 
 after_success:
-    - codecov
+  - codecov
