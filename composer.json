@@ -27,7 +27,8 @@
     ],
     "require":
     {
-        "php":                  "^5.5|7.0",
+        "php":                  "^5.5",
+        "ext-memcache":         "*",
         "psr/cache":            "1.0.0",
         "cache/adapter-common": "^0.1",
         "cache/taggable-cache": "^0.2"
