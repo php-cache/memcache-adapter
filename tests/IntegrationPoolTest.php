@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of php-cache\memcache-adapter package.
+ * This file is part of php-cache\mencache-adapter package.
  *
  * (c) 2015-2015 Aaron Scherer <aequasi@gmail.com>, Tobias Nyholm <tobias.nyholm@gmail.com>
  *
@@ -27,7 +27,7 @@ class IntegrationPoolTest extends CachePoolTest
     private function getClient()
     {
         if ($this->client === null) {
-            $this->client = new Memcache;
+            $this->client = new Memcache();
             $this->client->connect('localhost', 11211);
         }
 
