@@ -18,7 +18,7 @@ use Psr\Cache\CacheItemInterface;
 class MemcacheCachePool extends AbstractCachePool
 {
     /**
-     * @var Memcache
+     * @type Memcache
      */
     private $cache;
 
