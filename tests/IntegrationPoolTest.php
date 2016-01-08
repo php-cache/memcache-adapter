@@ -27,7 +27,7 @@ class IntegrationPoolTest extends CachePoolTest
     private function getClient()
     {
         if ($this->client === null) {
-            $this->client = new Memcache;
+            $this->client = new Memcache();
             $this->client->connect('localhost', 11211);
         }
 
